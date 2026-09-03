@@ -2,7 +2,7 @@
 
 這是「作業清點小幫手」的**靜態預覽頁**，讓你在建立自己的正式版本之前，先摸一下操作介面。
 
-👉 **[點我開啟預覽](https://ymt11112-code.github.io/homework-tracker-demo/)**
+👉 **[點我開啟預覽](https://ymt11112-code.github.io/assignment-list-demo/)**
 
 ## 這個 Demo 能做什麼 / 不能做什麼
 
