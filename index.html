@@ -184,7 +184,31 @@
         <div class="container mx-auto max-w-7xl px-4 py-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
             <span>👀 這是<strong>線上預覽 Demo</strong>，資料只存在您目前這個瀏覽器，不會雲端同步。表格內容可自由點擊試玩。</span>
             <a id="demo-banner-cta" href="#" target="_blank" rel="noopener" class="underline font-semibold whitespace-nowrap hover:text-[#f0e8dc]">🚀 建立我的專屬副本，開始正式使用 →</a>
+            <button id="demo-deploy-guide-btn" class="underline whitespace-nowrap hover:text-[#f0e8dc]">📖 部署教學</button>
             <button id="demo-reset-btn" class="underline whitespace-nowrap hover:text-[#f0e8dc]">🔄 清除示範資料</button>
+        </div>
+    </div>
+
+    <!-- 部署教學 Modal：獨立於 setup-section / main-section 之外，不管畫面正顯示哪一個都能打開 -->
+    <div id="demo-deploy-guide-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[80] flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 md:p-8 relative">
+            <button id="demo-deploy-guide-close-btn" class="absolute top-4 right-4 bg-[#f0e8dc] text-[#5d4a3a] rounded-full p-2 hover:bg-[#e7ddd0]">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <h3 class="text-lg md:text-xl font-bold text-[#4a3728] mb-3 flex items-center gap-2">
+                <span>🚀</span> 部署教學
+            </h3>
+            <p class="text-sm text-[#8d7862] mb-4">本系統採用 Google Apps Script 開發，完全不需要安裝任何程式或會寫程式。請依照以下步驟，幾分鐘內就能擁有一份「屬於您自己」的工具：</p>
+            <ol class="text-sm text-[#5d4a3a] space-y-2 mb-5 list-decimal list-inside">
+                <li>點擊下方按鈕，將範本試算表<strong class="text-[#4a3728]">「建立副本」</strong>到您自己的雲端硬碟。</li>
+                <li>在複製出的試算表中點選「擴充功能」&gt;「Apps Script」。</li>
+                <li>點選右上方「部署」&gt;「新增部署作業」，類型選擇「網頁應用程式」。</li>
+                <li>執行身分選「我」、存取權限設為「所有人」，部署完成後取得的<strong class="text-[#4a3728]">「網頁應用程式網址」</strong>，就是您專屬的入口！</li>
+            </ol>
+            <a id="demo-deploy-guide-copy-btn" href="#" target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center w-full gap-2 bg-gradient-to-r from-[#d98c6a] to-[#c9714f] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#c9714f] hover:to-[#b6603f] shadow-sm">
+                📄 點我取得範本副本並開始使用
+            </a>
         </div>
     </div>
 
@@ -6339,7 +6363,7 @@
         }
 
         function initTemplateCopyButton() {
-            ['get-template-copy-btn', 'demo-banner-cta'].forEach(id => {
+            ['get-template-copy-btn', 'demo-banner-cta', 'demo-deploy-guide-copy-btn'].forEach(id => {
                 const btn = document.getElementById(id);
                 if (!btn) return;
                 if (TEMPLATE_SHEET_ID) {
@@ -6380,6 +6404,15 @@
             _applyState({ ...appState, students: demoStudents, assignments: [demoAssignment] });
             saveData();
         })();
+        document.getElementById('demo-deploy-guide-btn')?.addEventListener('click', () => {
+            document.getElementById('demo-deploy-guide-modal')?.classList.remove('hidden');
+        });
+        document.getElementById('demo-deploy-guide-close-btn')?.addEventListener('click', () => {
+            document.getElementById('demo-deploy-guide-modal')?.classList.add('hidden');
+        });
+        document.getElementById('demo-deploy-guide-modal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'demo-deploy-guide-modal') e.target.classList.add('hidden');
+        });
         document.getElementById('demo-reset-btn')?.addEventListener('click', () => {
             if (confirm('確定要清除示範資料，重新整理頁面嗎？')) {
                 localStorage.removeItem('homeworkTrackerData');
