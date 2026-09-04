@@ -178,111 +178,119 @@
         .custom-assignment-option .opt-count { flex-shrink: 0; color: #ef4444; font-weight: 600; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-[#f6efe4] text-[#4a3728]">
 
-    <div id="demo-banner" class="sticky top-0 z-50 bg-indigo-900 text-white text-sm">
+    <div id="demo-banner" class="sticky top-0 z-50 bg-gradient-to-r from-[#6b5646] to-[#8d6e63] text-white text-sm">
         <div class="container mx-auto max-w-7xl px-4 py-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
             <span>👀 這是<strong>線上預覽 Demo</strong>，資料只存在您目前這個瀏覽器，不會雲端同步。表格內容可自由點擊試玩。</span>
-            <a id="demo-banner-cta" href="#" target="_blank" rel="noopener" class="underline font-semibold whitespace-nowrap hover:text-indigo-200">🚀 建立我的專屬副本，開始正式使用 →</a>
-            <button id="demo-reset-btn" class="underline whitespace-nowrap hover:text-indigo-200">🔄 清除示範資料</button>
+            <a id="demo-banner-cta" href="#" target="_blank" rel="noopener" class="underline font-semibold whitespace-nowrap hover:text-[#f0e8dc]">🚀 建立我的專屬副本，開始正式使用 →</a>
+            <button id="demo-reset-btn" class="underline whitespace-nowrap hover:text-[#f0e8dc]">🔄 清除示範資料</button>
         </div>
     </div>
 
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-7xl">
         <div class="flex justify-center items-center mb-6 relative">
-            <h1 id="app-title" class="text-3xl font-bold text-center text-gray-800">作業清點小幫手</h1>
-            <span id="sync-status" class="absolute left-0 text-xs font-medium text-gray-400"></span>
-            <button id="show-manual-btn" class="absolute right-0 bg-gray-200 text-gray-700 text-xs font-semibold py-1 px-3 rounded-full hover:bg-gray-300">使用說明</button>
+            <h1 id="app-title" class="text-3xl font-bold text-center text-[#4a3728]">作業清點小幫手</h1>
+            <span id="sync-status" class="absolute left-0 text-xs font-medium text-[#a3937f]"></span>
+            <button id="show-manual-btn" class="absolute right-0 bg-white border border-[#e7ddd0] text-[#8d7862] text-xs font-semibold py-1 px-3 rounded-full hover:bg-[#fdfaf5]">使用說明</button>
         </div>
 
         <!-- 設定區 -->
         <div id="setup-section" class="mb-8">
 
             <!-- Hero -->
-            <div class="bg-gradient-to-br from-indigo-600 to-blue-600 rounded-2xl p-8 text-center text-white shadow-md mb-6">
-                <h2 class="text-2xl md:text-3xl font-bold mb-2">📋 作業清點小幫手</h2>
-                <p class="text-indigo-100 max-w-2xl mx-auto">老師的班級作業追蹤神器 —— 一鍵登記、自動統計缺交名單、雲端同步備份，不需要寫任何程式碼。</p>
+            <div class="bg-white border border-[#e7ddd0] rounded-2xl px-5 py-4 mb-6 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                    <h2 class="text-lg md:text-xl font-bold text-[#4a3728]">📋 作業清點小幫手</h2>
+                    <p class="text-xs md:text-sm text-[#8d7862] mt-0.5">一鍵登記・自動統計缺交・雲端同步備份，老師的班級作業追蹤神器</p>
+                </div>
+                <div class="flex gap-1.5 flex-wrap">
+                    <span class="text-xs px-2.5 py-1 rounded-full bg-[#eef4ec] text-[#5f8863] font-medium">🌿 免安裝</span>
+                    <span class="text-xs px-2.5 py-1 rounded-full bg-[#fdf0e9] text-[#c06a45] font-medium">🍑 5 分鐘上手</span>
+                    <span class="text-xs px-2.5 py-1 rounded-full bg-[#fbf3e2] text-[#a67c2e] font-medium">☁️ 自動備份</span>
+                </div>
             </div>
 
             <!-- 功能亮點 -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                    <div class="text-2xl mb-1">⚡</div>
-                    <h3 class="font-semibold text-gray-800 text-sm mb-1">一鍵批次登記</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">點擊狀態按鈕即可循環切換，支援整欄、整組、依座號批次修改。</p>
+                <div class="bg-white p-4 rounded-xl border border-[#ece2d3] border-l-4 border-l-[#8fb996]">
+                    <div class="w-9 h-9 flex items-center justify-center rounded-full bg-[#eef4ec] text-lg mb-2">⚡</div>
+                    <h3 class="font-semibold text-[#4a3728] text-sm mb-1">一鍵批次登記</h3>
+                    <p class="text-xs text-[#8d7862] leading-relaxed">點擊狀態按鈕即可循環切換，支援整欄、整組、依座號批次修改。</p>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                    <div class="text-2xl mb-1">📊</div>
-                    <h3 class="font-semibold text-gray-800 text-sm mb-1">自動統計總覽</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">即時列出各作業未繳交、待訂正名單，缺交數目一目了然。</p>
+                <div class="bg-white p-4 rounded-xl border border-[#ece2d3] border-l-4 border-l-[#d98c6a]">
+                    <div class="w-9 h-9 flex items-center justify-center rounded-full bg-[#fdf0e9] text-lg mb-2">📊</div>
+                    <h3 class="font-semibold text-[#4a3728] text-sm mb-1">自動統計總覽</h3>
+                    <p class="text-xs text-[#8d7862] leading-relaxed">即時列出各作業未繳交、待訂正名單，缺交數目一目了然。</p>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                    <div class="text-2xl mb-1">☁️</div>
-                    <h3 class="font-semibold text-gray-800 text-sm mb-1">雲端同步備份</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">資料自動備份到您自己的 Google Sheet，跨裝置不遺失。</p>
+                <div class="bg-white p-4 rounded-xl border border-[#ece2d3] border-l-4 border-l-[#7fa3b0]">
+                    <div class="w-9 h-9 flex items-center justify-center rounded-full bg-[#eaf2f3] text-lg mb-2">☁️</div>
+                    <h3 class="font-semibold text-[#4a3728] text-sm mb-1">雲端同步備份</h3>
+                    <p class="text-xs text-[#8d7862] leading-relaxed">資料自動備份到您自己的 Google Sheet，跨裝置不遺失。</p>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100">
-                    <div class="text-2xl mb-1">🏆</div>
-                    <h3 class="font-semibold text-gray-800 text-sm mb-1">自動積分獎勵</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">準時／訂正給分規則可自訂，符合條件自動加分。</p>
+                <div class="bg-white p-4 rounded-xl border border-[#ece2d3] border-l-4 border-l-[#d9b25c]">
+                    <div class="w-9 h-9 flex items-center justify-center rounded-full bg-[#fbf3e2] text-lg mb-2">🏆</div>
+                    <h3 class="font-semibold text-[#4a3728] text-sm mb-1">自動積分獎勵</h3>
+                    <p class="text-xs text-[#8d7862] leading-relaxed">準時／訂正給分規則可自訂，符合條件自動加分。</p>
                 </div>
             </div>
 
             <!-- 立即開始使用（建立副本） -->
-            <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-6 md:p-8 mb-6">
-                <h3 class="text-lg md:text-xl font-bold text-amber-900 mb-3 flex items-center gap-2">
+            <div class="relative bg-white border border-[#e7ddd0] rounded-2xl p-6 md:p-8 mb-6 overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#8fb996] via-[#d9b25c] to-[#d98c6a]"></div>
+                <h3 class="text-lg md:text-xl font-bold text-[#4a3728] mb-3 flex items-center gap-2">
                     <span>🚀</span> 立即開始使用您的作業清點小幫手
                 </h3>
-                <p class="text-sm text-amber-900/80 mb-4">本系統採用 Google Apps Script 開發，完全不需要安裝任何程式或會寫程式。請依照以下步驟，幾分鐘內就能擁有一份「屬於您自己」的工具：</p>
-                <ol class="text-sm text-amber-950 space-y-2 mb-5 list-decimal list-inside">
-                    <li>點擊下方按鈕，將範本試算表<strong>「建立副本」</strong>到您自己的雲端硬碟。</li>
+                <p class="text-sm text-[#8d7862] mb-4">本系統採用 Google Apps Script 開發，完全不需要安裝任何程式或會寫程式。請依照以下步驟，幾分鐘內就能擁有一份「屬於您自己」的工具：</p>
+                <ol class="text-sm text-[#5d4a3a] space-y-2 mb-5 list-decimal list-inside">
+                    <li>點擊下方按鈕，將範本試算表<strong class="text-[#4a3728]">「建立副本」</strong>到您自己的雲端硬碟。</li>
                     <li>在複製出的試算表中點選「擴充功能」&gt;「Apps Script」。</li>
                     <li>點選右上方「部署」&gt;「新增部署作業」，類型選擇「網頁應用程式」。</li>
-                    <li>執行身分選「我」、存取權限設為「所有人」，部署完成後取得的<strong>「網頁應用程式網址」</strong>，就是您專屬的入口！</li>
+                    <li>執行身分選「我」、存取權限設為「所有人」，部署完成後取得的<strong class="text-[#4a3728]">「網頁應用程式網址」</strong>，就是您專屬的入口！</li>
                 </ol>
                 <a id="get-template-copy-btn" href="#" target="_blank" rel="noopener"
-                   class="inline-flex items-center justify-center w-full sm:w-auto gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-indigo-700 shadow-sm">
+                   class="inline-flex items-center justify-center w-full sm:w-auto gap-2 bg-gradient-to-r from-[#d98c6a] to-[#c9714f] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#c9714f] hover:to-[#b6603f] shadow-sm">
                     📄 點我取得範本副本並開始使用
                 </a>
-                <p class="text-xs text-amber-900/70 mt-3">💡 範本內已附上示範學生名單、分組與一項模擬作業，方便您快速了解操作方式；正式使用時再把範例資料換成您班上的名單即可。</p>
+                <p class="text-xs text-[#a3937f] mt-3">💡 範本內已附上示範學生名單、分組與一項模擬作業，方便您快速了解操作方式；正式使用時再把範例資料換成您班上的名單即可。</p>
             </div>
 
             <!-- 進階設定（已有工具或想手動貼資料的使用者） -->
-            <details class="bg-white p-6 rounded-lg shadow-md">
-                <summary class="text-xl font-semibold cursor-pointer select-none">⚙️ 進階設定：我已有自己的 Google Sheet / 想手動貼上名單</summary>
+            <details class="bg-white border border-[#e7ddd0] p-6 rounded-2xl">
+                <summary class="text-lg font-semibold cursor-pointer select-none text-[#4a3728]">⚙️ 進階設定：我已有自己的 Google Sheet / 想手動貼上名單</summary>
 
                 <div class="mt-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">1. 匯入資料 (可匯入學生名單或完整備份):</label>
+                    <label class="block text-sm font-medium text-[#5d4a3a] mb-2">1. 匯入資料 (可匯入學生名單或完整備份):</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <button id="import-csv-btn" class="w-full bg-sky-500 text-white py-2 px-4 rounded-md hover:bg-sky-600 font-semibold">匯入 CSV</button>
-                        <button id="load-from-sheet-btn" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 font-semibold">從 Google Sheet 載入</button>
+                        <button id="import-csv-btn" class="w-full bg-[#7fa3b0] text-white py-2 px-4 rounded-md hover:bg-[#6d8f9c] font-semibold">匯入 CSV</button>
+                        <button id="load-from-sheet-btn" class="w-full bg-[#7c9a7e] text-white py-2 px-4 rounded-md hover:bg-[#6b876d] font-semibold">從 Google Sheet 載入</button>
                     </div>
-                    <p class="text-xs text-gray-500 mt-2">💡 提示：先在下方輸入Google Sheet連結，再點擊「從 Google Sheet 載入」</p>
+                    <p class="text-xs text-[#a3937f] mt-2">💡 提示：先在下方輸入Google Sheet連結，再點擊「從 Google Sheet 載入」</p>
                     <input type="file" id="csv-file-input" class="hidden" accept=".csv">
                 </div>
 
                 <div class="relative flex py-5 items-center">
-                    <div class="flex-grow border-t border-gray-300"></div>
-                    <span class="flex-shrink mx-4 text-gray-500 text-sm">或</span>
-                    <div class="flex-grow border-t border-gray-300"></div>
+                    <div class="flex-grow border-t border-[#e7ddd0]"></div>
+                    <span class="flex-shrink mx-4 text-[#a3937f] text-sm">或</span>
+                    <div class="flex-grow border-t border-[#e7ddd0]"></div>
                 </div>
 
                 <div class="mb-4">
-                    <label for="student-list" class="block text-sm font-medium text-gray-700 mb-2">2. 手動貼上學生名單 (一行一個，格式：座號 姓名 組別):</label>
+                    <label for="student-list" class="block text-sm font-medium text-[#5d4a3a] mb-2">2. 手動貼上學生名單 (一行一個，格式：座號 姓名 組別):</label>
                      <div class="flex justify-end mb-1">
-                         <button id="download-csv-template-btn" class="text-xs bg-gray-200 text-gray-700 py-1 px-2 rounded-md hover:bg-gray-300 font-semibold">下載CSV範本</button>
+                         <button id="download-csv-template-btn" class="text-xs bg-[#f0e8dc] text-[#5d4a3a] py-1 px-2 rounded-md hover:bg-[#e7ddd0] font-semibold">下載CSV範本</button>
                     </div>
-                    <textarea id="student-list" rows="10" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500" placeholder="1 王小明 1A
+                    <textarea id="student-list" rows="10" class="w-full p-2 border border-[#e7ddd0] rounded-md focus:ring-2 focus:ring-[#d98c6a]" placeholder="1 王小明 1A
 2 陳大華 1B
 3 林美麗 2A"></textarea>
                 </div>
                 <div class="mb-4">
-                    <label for="sheet-url" class="block text-sm font-medium text-gray-700 mb-2">3. (可選) 貼上您的 Google Sheet 連結:</label>
-                    <input type="url" id="sheet-url" class="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500" placeholder="https://docs.google.com/spreadsheets/d/...">
+                    <label for="sheet-url" class="block text-sm font-medium text-[#5d4a3a] mb-2">3. (可選) 貼上您的 Google Sheet 連結:</label>
+                    <input type="url" id="sheet-url" class="w-full p-2 border border-[#e7ddd0] rounded-md focus:ring-2 focus:ring-[#d98c6a]" placeholder="https://docs.google.com/spreadsheets/d/...">
                 </div>
-                <button id="start-btn" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 font-semibold">開始使用</button>
+                <button id="start-btn" class="w-full bg-[#8d6e63] text-white py-2 px-4 rounded-md hover:bg-[#795548] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#8d6e63] font-semibold">開始使用</button>
 
-                <p class="text-xs text-gray-500 mt-6">注意：所有資料將安全地儲存在您的瀏覽器中。清除瀏覽器快取可能會導致資料遺失。</p>
+                <p class="text-xs text-[#a3937f] mt-6">注意：所有資料將安全地儲存在您的瀏覽器中。清除瀏覽器快取可能會導致資料遺失。</p>
             </details>
         </div>
 
