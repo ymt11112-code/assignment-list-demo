@@ -180,38 +180,6 @@
 </head>
 <body class="bg-[#f6efe4] text-[#4a3728]">
 
-    <div id="demo-banner" class="sticky top-0 z-50 bg-gradient-to-r from-[#6b5646] to-[#8d6e63] text-white text-sm">
-        <div class="container mx-auto max-w-7xl px-4 py-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
-            <span>👀 這是<strong>線上預覽 Demo</strong>，資料只存在您目前這個瀏覽器，不會雲端同步。表格內容可自由點擊試玩。</span>
-            <a id="demo-banner-cta" href="#" target="_blank" rel="noopener" class="underline font-semibold whitespace-nowrap hover:text-[#f0e8dc]">🚀 建立我的專屬副本，開始正式使用 →</a>
-            <button id="demo-deploy-guide-btn" class="underline whitespace-nowrap hover:text-[#f0e8dc]">📖 部署教學</button>
-            <button id="demo-reset-btn" class="underline whitespace-nowrap hover:text-[#f0e8dc]">🔄 清除示範資料</button>
-        </div>
-    </div>
-
-    <!-- 部署教學 Modal：獨立於 setup-section / main-section 之外，不管畫面正顯示哪一個都能打開 -->
-    <div id="demo-deploy-guide-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[80] flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-2xl shadow-xl max-w-lg w-full p-6 md:p-8 relative">
-            <button id="demo-deploy-guide-close-btn" class="absolute top-4 right-4 bg-[#f0e8dc] text-[#5d4a3a] rounded-full p-2 hover:bg-[#e7ddd0]">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-            </button>
-            <h3 class="text-lg md:text-xl font-bold text-[#4a3728] mb-3 flex items-center gap-2">
-                <span>🚀</span> 部署教學
-            </h3>
-            <p class="text-sm text-[#8d7862] mb-4">本系統採用 Google Apps Script 開發，完全不需要安裝任何程式或會寫程式。請依照以下步驟，幾分鐘內就能擁有一份「屬於您自己」的工具：</p>
-            <ol class="text-sm text-[#5d4a3a] space-y-2 mb-5 list-decimal list-inside">
-                <li>點擊下方按鈕，將範本試算表<strong class="text-[#4a3728]">「建立副本」</strong>到您自己的雲端硬碟。</li>
-                <li>在複製出的試算表中點選「擴充功能」&gt;「Apps Script」。</li>
-                <li>點選右上方「部署」&gt;「新增部署作業」，類型選擇「網頁應用程式」。</li>
-                <li>執行身分選「我」、存取權限設為「所有人」，部署完成後取得的<strong class="text-[#4a3728]">「網頁應用程式網址」</strong>，就是您專屬的入口！</li>
-            </ol>
-            <a id="demo-deploy-guide-copy-btn" href="#" target="_blank" rel="noopener"
-               class="inline-flex items-center justify-center w-full gap-2 bg-gradient-to-r from-[#d98c6a] to-[#c9714f] text-white font-semibold py-3 px-6 rounded-lg hover:from-[#c9714f] hover:to-[#b6603f] shadow-sm">
-                📄 點我取得範本副本並開始使用
-            </a>
-        </div>
-    </div>
-
     <div id="app-container" class="container mx-auto p-4 md:p-8 max-w-7xl">
         <div class="flex justify-center items-center mb-6 relative">
             <h1 id="app-title" class="text-3xl font-bold text-center text-[#4a3728]">作業清點小幫手</h1>
@@ -352,14 +320,14 @@
                             <button id="export-csv-btn" class="btn-group-item">⬆️ 匯出 CSV</button>
                         </div>
                     </div>
-                    <!-- 分享版：已移除「開啟聯絡簿」按鈕，避免連到範本擁有者的私人簡報 -->
+                    <a href="https://docs.google.com/presentation/d/1bUBSjLNjatb6XFjkGWSn1_1aC-2vg6jNXGst7CeZCXk/edit?usp=sharing" target="_blank" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 font-semibold">開啟聯絡簿</a>
                 </div>
             </div>
-
+            
             <div class="bg-white p-6 rounded-lg shadow-md mb-8">
                 <div id="completed-students-summary" class="mb-4 p-3 rounded-md text-sm hidden"></div>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <!-- 分享版：已移除「從聯絡簿匯入」按鈕，該功能依賴範本擁有者的私人簡報 ID -->
+                    <button id="fetch-from-slides-btn" class="bg-amber-500 text-white py-2 px-4 rounded-md hover:bg-amber-600 font-semibold whitespace-nowrap">從聯絡簿匯入</button>
                     <input type="text" id="new-assignment-name" class="flex-grow p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500" placeholder="輸入作業名稱，可用頓號、空格批次新增 (例: 國習L1、數習P2)">
                     <button id="add-assignment-btn" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 font-semibold">新增作業</button>
                 </div>
@@ -415,6 +383,7 @@
                             <li><code>開啟CSV</code>: 產生適合直接複製貼到 Google Sheet の文字內容。</li>
                             <li><code>匯出 CSV</code>: 下載包含所有資料の備份檔，可用 Excel 開啟。</li>
                             <li><code>備份至 Google Sheet</code>: 將現在の資料備份到您指定の Google Sheet。首次使用需授權。</li>
+                            <li><code>開啟聯絡簿</code>: 快速開啟指定の聯絡簿簡報連結。</li>
                         </ul>
                     </li>
                     <li><strong>完成/未完成名單</strong>: 在新增作業區上方，會根據全班完成狀況，智慧顯示「可蓋章」或「待完成」の學生名單。</li>
@@ -997,7 +966,7 @@
         // (試算表網址中 /d/ 與 /edit 之間那一段，例如：
         //  https://docs.google.com/spreadsheets/d/【這一段】/edit )
         // 在填入之前，「立即開始使用」按鈕會顯示為停用狀態。
-        const TEMPLATE_SHEET_ID = '1_PpnKDwmSNuiabLJbKCJYDX8XSPtjvwE5lyi8mgGu_0';
+        const TEMPLATE_SHEET_ID = ''; // TODO: 貼上範本試算表 ID
 
         // --- App State ---
         let appState = { students: [], assignments: [], sheetUrl: '', semesterStartDate: '2026-02-23', semesterEndWeek: 21 };
@@ -1316,31 +1285,25 @@
         }
         
         function updateOpenSheetBtnState() {
-            // 分享版：不再有寫死的預設試算表。未設定連結時直接停用按鈕，
-            // 而不是連去範本擁有者自己的 Google Sheet。
-            const hasSheetUrl = appState.sheetUrl && appState.sheetUrl.startsWith('http');
-
+            const defaultUrl = 'https://docs.google.com/spreadsheets/d/1ycaFHWU-qIniB2w2giVL6cwaYiYftkMmquUCp0Xk5sY/edit?gid=0#gid=0';
+            const targetUrl = (appState.sheetUrl && appState.sheetUrl.startsWith('http')) 
+                               ? appState.sheetUrl 
+                               : defaultUrl;
+            
+            openSheetBtn.href = targetUrl;
             openSheetBtn.setAttribute('target', '_blank');
+            openSheetBtn.title = "在新分頁中開啟 Google Sheet";
+            
             openSheetBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-
-            if (hasSheetUrl) {
-                openSheetBtn.href = appState.sheetUrl;
-                openSheetBtn.title = "在新分頁中開啟 Google Sheet";
-                openSheetBtn.classList.remove('bg-gray-400');
+            
+            if (appState.sheetUrl && appState.sheetUrl.startsWith('http')) {
+                openSheetBtn.classList.remove('bg-gray-400'); // In case it was default before
                 openSheetBtn.classList.add('bg-green-600', 'hover:bg-green-700');
             } else {
-                openSheetBtn.removeAttribute('href');
-                openSheetBtn.title = "尚未設定 Google Sheet 連結，請先點「⚙️ 查看／設定連結」";
                 openSheetBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                openSheetBtn.classList.add('bg-gray-400', 'opacity-50', 'cursor-not-allowed');
+                openSheetBtn.classList.add('bg-gray-400'); // Gray to indicate default
             }
         }
-        openSheetBtn.addEventListener('click', (e) => {
-            if (!openSheetBtn.getAttribute('href')) {
-                e.preventDefault();
-                alert('尚未設定 Google Sheet 連結。請先點「⚙️ 查看／設定連結」設定您自己的 Google Sheet。');
-            }
-        });
 
         // --- Data Persistence ---
         function recordState() {
@@ -4179,14 +4142,6 @@
         // --- Google Apps Script Functions ---
         function handleBackupToSheet() {
             console.log("handleBackupToSheet 被呼叫");
-
-            // 分享版：絕不寫入寫死的預設試算表。沒有自己的 sheetUrl 就直接中止，
-            // 避免把資料誤寫到範本擁有者（或任何非使用者本人）的 Google Sheet。
-            if (!appState.sheetUrl || !appState.sheetUrl.startsWith('http')) {
-                alert('尚未設定您自己的 Google Sheet 連結，無法備份。\n請先點「⚙️ 查看／設定連結」貼上您自己的 Google Sheet 網址。');
-                return;
-            }
-
             const originalButtonText = backupSheetBtn.textContent;
             backupSheetBtn.textContent = "備份中...";
             backupSheetBtn.disabled = true;
@@ -4209,8 +4164,9 @@
                 return;
             }
 
-            // 取得目標URL(一定是使用者自己設定的 sheetUrl，已於函式開頭驗證)
-            const targetUrl = appState.sheetUrl;
+            // 取得目標URL
+            const defaultUrl = 'https://docs.google.com/spreadsheets/d/1ycaFHWU-qIniB2w2giVL6cwaYiYftkMmquUCp0Xk5sY/edit?gid=0#gid=0';
+            const targetUrl = (appState.sheetUrl && appState.sheetUrl.startsWith('http')) ? appState.sheetUrl : defaultUrl;
 
             // 檢查google.script.run是否可用
             if (typeof google === 'undefined' || !google.script || !google.script.run) {
@@ -4887,15 +4843,18 @@
         cancelUrlPromptBtn.addEventListener('click', () => closeModal(sheetUrlPromptModal));
         
         confirmUrlPromptBtn.addEventListener('click', () => {
-            // 分享版：不再有寫死的預設試算表可退回讀取，欄位留空就中止，
-            // 避免不小心讀到範本擁有者（或其他非使用者本人）的 Google Sheet。
+            const defaultUrl = 'https://docs.google.com/spreadsheets/d/1ycaFHWU-qIniB2w2giVL6cwaYiYftkMmquUCp0Xk5sY/edit?gid=0#gid=0';
             let url = promptSheetUrlInput.value.trim();
-
-            if (!url || !url.startsWith('http') || !url.includes('spreadsheets')) {
+            
+            if (url && (!url.startsWith('http') || !url.includes('spreadsheets'))) {
                 alert('請輸入有效的 Google Sheet 網址。');
                 return;
             }
 
+            if (!url) {
+                url = defaultUrl;
+            } 
+            
             closeModal(sheetUrlPromptModal);
             confirmAndLoadSheet(url);
         });
@@ -6363,63 +6322,24 @@
         }
 
         function initTemplateCopyButton() {
-            ['get-template-copy-btn', 'demo-banner-cta', 'demo-deploy-guide-copy-btn'].forEach(id => {
-                const btn = document.getElementById(id);
-                if (!btn) return;
-                if (TEMPLATE_SHEET_ID) {
-                    btn.href = `https://docs.google.com/spreadsheets/d/${TEMPLATE_SHEET_ID}/copy`;
-                } else {
-                    btn.removeAttribute('href');
-                    btn.classList.add('opacity-50', 'cursor-not-allowed');
-                    btn.title = '尚未設定範本試算表，請聯絡工具提供者';
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        alert('尚未設定範本試算表連結。\n（開發者提醒：請在程式碼中填入 TEMPLATE_SHEET_ID）');
-                    });
-                }
-            });
+            const btn = document.getElementById('get-template-copy-btn');
+            if (!btn) return;
+            if (TEMPLATE_SHEET_ID) {
+                btn.href = `https://docs.google.com/spreadsheets/d/${TEMPLATE_SHEET_ID}/copy`;
+            } else {
+                btn.removeAttribute('href');
+                btn.classList.add('opacity-50', 'cursor-not-allowed');
+                btn.title = '尚未設定範本試算表，請聯絡工具提供者';
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('尚未設定範本試算表連結。\n（開發者提醒：請在程式碼中填入 TEMPLATE_SHEET_ID）');
+                });
+            }
         }
         initTemplateCopyButton();
 
         applyAppTitle();
         startupLoadData();
-
-        // --- 靜態預覽 Demo：僅供此展示頁使用，不影響分享版／GAS 部署版 ---
-        // startupLoadData() 執行完後，appState 已經反映瀏覽器快取內容。
-        // 只有「真的還沒有任何資料」(首次造訪，或使用者按過清除)才帶入示範學生名冊，
-        // 不會覆蓋訪客自己已經在玩的資料。資料仍只存在訪客自己的瀏覽器。
-        (function seedDemoDataIfEmpty() {
-            if (appState.students && appState.students.length > 0) return;
-            const demoAssignment = { id: 1, name: '國語生字簿(示範作業)', date: new Date('2026-09-01').toISOString(), category: '國語' };
-            const demoStudents = [
-                { id: 0, number: '1', name: '王小明', group: '一', statuses: { 1: '已完成' } },
-                { id: 1, number: '2', name: '陳小華', group: '一', statuses: { 1: '未繳交' } },
-                { id: 2, number: '3', name: '林小美', group: '一', statuses: { 1: '待訂正' } },
-                { id: 3, number: '4', name: '張小強', group: '一', statuses: { 1: '已訂正' } },
-                { id: 4, number: '5', name: '李小芳', group: '二', statuses: { 1: '已完成' } },
-                { id: 5, number: '6', name: '黃小龍', group: '二', statuses: { 1: '未繳交' } },
-                { id: 6, number: '7', name: '吳小英', group: '二', statuses: { 1: '已交訂' } },
-                { id: 7, number: '8', name: '蔡小傑', group: '二', statuses: { 1: '缺簽名' } }
-            ];
-            _applyState({ ...appState, students: demoStudents, assignments: [demoAssignment] });
-            saveData();
-        })();
-        document.getElementById('demo-deploy-guide-btn')?.addEventListener('click', () => {
-            document.getElementById('demo-deploy-guide-modal')?.classList.remove('hidden');
-        });
-        document.getElementById('demo-deploy-guide-close-btn')?.addEventListener('click', () => {
-            document.getElementById('demo-deploy-guide-modal')?.classList.add('hidden');
-        });
-        document.getElementById('demo-deploy-guide-modal')?.addEventListener('click', (e) => {
-            if (e.target.id === 'demo-deploy-guide-modal') e.target.classList.add('hidden');
-        });
-        document.getElementById('demo-reset-btn')?.addEventListener('click', () => {
-            if (confirm('確定要清除示範資料，重新整理頁面嗎？')) {
-                localStorage.removeItem('homeworkTrackerData');
-                location.reload();
-            }
-        });
-
         // Populate pickers after appState is loaded from localStorage
         populateWeekSelect();
         populateMonthSelect();
