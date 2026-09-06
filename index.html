@@ -320,7 +320,7 @@
                             <button id="export-csv-btn" class="btn-group-item">⬆️ 匯出 CSV</button>
                         </div>
                     </div>
-                    <a href="https://docs.google.com/presentation/d/1bUBSjLNjatb6XFjkGWSn1_1aC-2vg6jNXGst7CeZCXk/edit?usp=sharing" target="_blank" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 font-semibold">開啟聯絡簿</a>
+                    <!-- 公開分享版不放置範本擁有者的私人聯絡簿連結 -->
                 </div>
             </div>
             
@@ -966,7 +966,7 @@
         // (試算表網址中 /d/ 與 /edit 之間那一段，例如：
         //  https://docs.google.com/spreadsheets/d/【這一段】/edit )
         // 在填入之前，「立即開始使用」按鈕會顯示為停用狀態。
-        const TEMPLATE_SHEET_ID = ''; // TODO: 貼上範本試算表 ID
+        const TEMPLATE_SHEET_ID = '1_PpnKDwmSNuiabLJbKCJYDX8XSPtjvwE5lyi8mgGu_0';
 
         // --- App State ---
         let appState = { students: [], assignments: [], sheetUrl: '', semesterStartDate: '2026-02-23', semesterEndWeek: 21 };
@@ -1285,23 +1285,23 @@
         }
         
         function updateOpenSheetBtnState() {
-            const defaultUrl = 'https://docs.google.com/spreadsheets/d/1ycaFHWU-qIniB2w2giVL6cwaYiYftkMmquUCp0Xk5sY/edit?gid=0#gid=0';
-            const targetUrl = (appState.sheetUrl && appState.sheetUrl.startsWith('http')) 
-                               ? appState.sheetUrl 
-                               : defaultUrl;
-            
-            openSheetBtn.href = targetUrl;
+            const targetUrl = (appState.sheetUrl && appState.sheetUrl.startsWith('http'))
+                ? appState.sheetUrl
+                : '';
+
             openSheetBtn.setAttribute('target', '_blank');
-            openSheetBtn.title = "在新分頁中開啟 Google Sheet";
-            
-            openSheetBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-            
-            if (appState.sheetUrl && appState.sheetUrl.startsWith('http')) {
+
+            if (targetUrl) {
+                openSheetBtn.href = targetUrl;
+                openSheetBtn.title = "在新分頁中開啟 Google Sheet";
+                openSheetBtn.classList.remove('opacity-50', 'cursor-not-allowed');
                 openSheetBtn.classList.remove('bg-gray-400'); // In case it was default before
                 openSheetBtn.classList.add('bg-green-600', 'hover:bg-green-700');
             } else {
+                openSheetBtn.removeAttribute('href');
+                openSheetBtn.title = "尚未設定 Google Sheet 連結";
                 openSheetBtn.classList.remove('bg-green-600', 'hover:bg-green-700');
-                openSheetBtn.classList.add('bg-gray-400'); // Gray to indicate default
+                openSheetBtn.classList.add('bg-gray-400', 'opacity-50', 'cursor-not-allowed');
             }
         }
 
@@ -4165,8 +4165,7 @@
             }
 
             // 取得目標URL
-            const defaultUrl = 'https://docs.google.com/spreadsheets/d/1ycaFHWU-qIniB2w2giVL6cwaYiYftkMmquUCp0Xk5sY/edit?gid=0#gid=0';
-            const targetUrl = (appState.sheetUrl && appState.sheetUrl.startsWith('http')) ? appState.sheetUrl : defaultUrl;
+            const targetUrl = (appState.sheetUrl && appState.sheetUrl.startsWith('http')) ? appState.sheetUrl : '';
 
             // 檢查google.script.run是否可用
             if (typeof google === 'undefined' || !google.script || !google.script.run) {
@@ -4843,7 +4842,6 @@
         cancelUrlPromptBtn.addEventListener('click', () => closeModal(sheetUrlPromptModal));
         
         confirmUrlPromptBtn.addEventListener('click', () => {
-            const defaultUrl = 'https://docs.google.com/spreadsheets/d/1ycaFHWU-qIniB2w2giVL6cwaYiYftkMmquUCp0Xk5sY/edit?gid=0#gid=0';
             let url = promptSheetUrlInput.value.trim();
             
             if (url && (!url.startsWith('http') || !url.includes('spreadsheets'))) {
@@ -4852,8 +4850,9 @@
             }
 
             if (!url) {
-                url = defaultUrl;
-            } 
+                alert('請輸入您自己的 Google Sheet 網址。');
+                return;
+            }
             
             closeModal(sheetUrlPromptModal);
             confirmAndLoadSheet(url);
