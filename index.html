@@ -22,7 +22,8 @@
     .steps strong{display:block;font-size:17px}.steps p{margin:3px 0;color:var(--muted)}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f1ece6;padding:2px 6px;border-radius:5px;overflow-wrap:anywhere}
     .optional{border-color:#d9cdf9;background:var(--violet-bg)}.optional h2{color:#59409c}.notice{border-left:4px solid var(--violet);padding:9px 14px;background:white;border-radius:8px;color:#5d4b82}
     .checks{padding-left:22px}.checks li{margin:7px 0}.tip{padding:14px 16px;border-radius:11px;background:#edf5ee;color:#4b694f}.privacy{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.privacy div{background:#faf6f0;border:1px solid var(--line);padding:15px;border-radius:12px;text-align:center}.privacy b{display:block}
-    footer{text-align:center;color:#8b7c70;font-size:13px;margin-top:28px}@media(max-width:650px){.privacy{grid-template-columns:1fr}.wrap{width:min(100% - 20px,920px);padding-top:15px}.steps>li{padding-left:48px}}
+    .section-intro{color:var(--muted);margin:-6px 0 22px}.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.feature{margin:0;border:1px solid var(--line);border-radius:16px;background:#faf7f2;overflow:hidden}.feature:first-child{grid-column:1/-1;display:grid;grid-template-columns:minmax(220px,.75fr) minmax(260px,1.25fr);align-items:center}.feature-media{background:#eee8df;overflow:hidden}.feature img{display:block;width:100%;height:auto}.feature:first-child img{width:min(100%,390px);margin:auto}.feature figcaption{padding:18px}.feature h3{margin:0 0 6px}.feature p{margin:0;color:var(--muted)}.feature-number{display:inline-grid;place-items:center;width:29px;height:29px;margin-right:7px;border-radius:50%;background:#e7ddff;color:#5d43a1;font-size:14px;font-weight:900;vertical-align:2px}
+    footer{text-align:center;color:#8b7c70;font-size:13px;margin-top:28px}@media(max-width:650px){.privacy,.feature-grid{grid-template-columns:1fr}.feature:first-child{grid-column:auto;display:block}.wrap{width:min(100% - 20px,920px);padding-top:15px}.steps>li{padding-left:48px}.feature figcaption{padding:15px}}
   </style>
 </head>
 <body>
@@ -33,6 +34,34 @@
       <p class="lead">一鍵登記作業狀態、統計缺交與訂正名單，並將資料儲存在您自己的 Google Sheet。</p>
       <a class="cta" href="https://docs.google.com/spreadsheets/d/1_PpnKDwmSNuiabLJbKCJYDX8XSPtjvwE5lyi8mgGu_0/copy" target="_blank" rel="noopener noreferrer">📄 建立我的範本副本</a>
       <p class="safe">您會建立自己的副本；不會共用範本原作者的班級資料。</p>
+    </section>
+
+    <section class="card" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">✨ 本系統亮點</h2>
+      <p class="section-intro">從全班作業登記到個別學生追蹤，電腦與手機都能快速掌握。</p>
+      <div class="feature-grid">
+        <figure class="feature">
+          <div class="feature-media"><img src="assets/mobile-student-missing-items.png" alt="手機畫面顯示每位學生的未繳交與待訂正作業" loading="lazy"></div>
+          <figcaption>
+            <h3><span class="feature-number">1</span>手機隨時查看學生缺項</h3>
+            <p>個人狀態卡片清楚列出未繳交、待訂正等項目，可在教室中用手機快速核對，無須一直回到電腦旁。</p>
+          </figcaption>
+        </figure>
+        <figure class="feature">
+          <div class="feature-media"><img src="assets/desktop-main-dashboard.png" alt="作業清點小幫手電腦版主畫面" loading="lazy"></div>
+          <figcaption>
+            <h3><span class="feature-number">2</span>全班作業狀態一目了然</h3>
+            <p>主畫面用顏色區分未繳交、已完成、待訂正等狀態，支援批次輸入、科目管理與資料備份。</p>
+          </figcaption>
+        </figure>
+        <figure class="feature">
+          <div class="feature-media"><img src="assets/group-status-overview.png" alt="個人狀態總覽中依組別篩選學生" loading="lazy"></div>
+          <figcaption>
+            <h3><span class="feature-number">3</span>依組別快速篩選</h3>
+            <p>可切換全班或指定組別，集中查看該組學生的缺交、訂正與缺簽名狀況，也能直接產生提醒訊息。</p>
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="card">
