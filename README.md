@@ -2,7 +2,7 @@
 
 這是「作業清點小幫手」的範本取得與部署說明 Repo。
 
-👉 **[開啟完整說明頁](https://ymt11112-code.github.io/assignment-list-demo/)**  
+👉 **[開啟完整說明頁](https://ymt11112-code.github.io/assignment-list-demo/)**<br>
 👉 **[建立 Google Sheet 範本副本](https://docs.google.com/spreadsheets/d/1_PpnKDwmSNuiabLJbKCJYDX8XSPtjvwE5lyi8mgGu_0/copy)**
 
 ## 系統亮點
