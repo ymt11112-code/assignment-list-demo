@@ -24,6 +24,7 @@
     .checks{padding-left:22px}.checks li{margin:7px 0}.tip{padding:14px 16px;border-radius:11px;background:#edf5ee;color:#4b694f}.privacy{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.privacy div{background:#faf6f0;border:1px solid var(--line);padding:15px;border-radius:12px;text-align:center}.privacy b{display:block}
     .section-intro{color:var(--muted);margin:-6px 0 18px}.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.feature{display:flex;align-items:flex-start;gap:12px;padding:17px;margin:0;border:1px solid var(--line);border-radius:14px;background:#faf7f2}.feature-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:12px;background:#eee7dc;font-size:22px}.feature-copy{min-width:0;flex:1}.feature h3{margin:0 0 4px;font-size:17px}.feature p{margin:0;color:var(--muted);font-size:14px}.shot-link{display:inline-flex;align-items:center;gap:5px;margin-top:9px;color:#7255bd;font-size:13px;font-weight:700;text-decoration:none}.shot-link:hover{text-decoration:underline}.shot-link img{width:42px;height:30px;object-fit:cover;border:1px solid #d9cdf9;border-radius:5px}.lightbox{display:none;position:fixed;inset:0;z-index:1000;padding:24px;background:rgba(31,25,21,.88);align-items:center;justify-content:center}.lightbox:target{display:flex}.lightbox img{display:block;max-width:min(1180px,94vw);max-height:90vh;border-radius:12px;background:white;box-shadow:0 20px 60px rgba(0,0,0,.4)}.lightbox-close{position:fixed;inset:0;text-indent:-9999px}.lightbox img{position:relative;z-index:1}.history{margin-top:18px;color:#8b7c70;font-size:12px}.history summary{cursor:pointer;text-align:center}.history-content{width:min(680px,100%);margin:9px auto 0;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:rgba(255,253,249,.7);text-align:left}.history-content ul{margin:5px 0 0;padding-left:20px}.footer-note{margin-top:4px}.footer-note a{color:#6f6258}.footer-note a:hover{text-decoration:none}
     footer{text-align:center;color:#8b7c70;font-size:13px;margin-top:20px}@media(max-width:650px){.privacy,.feature-grid{grid-template-columns:1fr}.wrap{width:min(100% - 20px,920px);padding-top:15px}.steps>li{padding-left:48px}.feature{padding:14px}.lightbox{padding:10px}}
+    .highlights-panel{margin-top:30px;padding-top:25px;border-top:1px solid var(--line);text-align:left}.highlights-panel h2,.highlights-panel .section-intro{text-align:center}
   </style>
 </head>
 <body>
@@ -34,21 +35,23 @@
       <p class="lead">一鍵登記作業狀態、統計缺交與訂正名單，並將資料儲存在您自己的 Google Sheet。</p>
       <a class="cta" href="https://docs.google.com/spreadsheets/d/1_PpnKDwmSNuiabLJbKCJYDX8XSPtjvwE5lyi8mgGu_0/copy" target="_blank" rel="noopener noreferrer">📄 建立我的範本副本</a>
       <p class="safe">您會建立自己的副本；不會共用範本原作者的班級資料。</p>
-    </section>
-
-    <section class="card" aria-labelledby="highlights-title">
+      <div class="highlights-panel" aria-labelledby="highlights-title">
       <h2 id="highlights-title">✨ 本系統亮點</h2>
       <p class="section-intro">從全班作業登記到個別學生追蹤，電腦與手機都能快速掌握。</p>
       <div class="feature-grid">
-        <article class="feature"><span class="feature-icon">🏫</span><div class="feature-copy"><h3>全班概況一目了然</h3><p>集中查看全班學生的未完成數量與狀態，快速找出需要提醒的學生。</p><a class="shot-link" href="#shot-class"><img src="assets/class-overview.png" alt="" loading="lazy">查看全班概況</a></div></article>
-        <article class="feature"><span class="feature-icon">👤</span><div class="feature-copy"><h3>個人作業概況</h3><p>依座號切換學生，分類顯示未繳交、待訂正、缺簽名與已完成作業。</p><a class="shot-link" href="#shot-person"><img src="assets/student-overview.png" alt="" loading="lazy">查看個人概況</a></div></article>
+        <article class="feature"><span class="feature-icon">🏫</span><div class="feature-copy"><h3>全班概況一目了然</h3><p>集中查看全班學生的未完成數量與狀態，也能從電腦主畫面或手機快速掌握。</p><a class="shot-link" href="#shot-class"><img src="assets/class-overview.png" alt="" loading="lazy">全班概況</a> <a class="shot-link" href="#shot-main"><img src="assets/desktop-main-dashboard.png" alt="" loading="lazy">主畫面</a> <a class="shot-link" href="#shot-mobile"><img src="assets/mobile-student-missing-items.png" alt="" loading="lazy">手機檢視</a></div></article>
+        <article class="feature"><span class="feature-icon">👤</span><div class="feature-copy"><h3>個人作業狀態</h3><p>依座號或組別篩選學生，分類顯示未繳交、待訂正、缺簽名與已完成作業。</p><a class="shot-link" href="#shot-person"><img src="assets/student-overview.png" alt="" loading="lazy">個人概況</a> <a class="shot-link" href="#shot-person-list"><img src="assets/group-status-overview.png" alt="" loading="lazy">個人狀態總覽</a></div></article>
         <article class="feature"><span class="feature-icon">✍️</span><div class="feature-copy"><h3>依組別快速登記</h3><p>小老師回報作業時，可依組別排列座號，直接整組或逐人更新狀態。</p><a class="shot-link" href="#shot-group-entry"><img src="assets/group-quick-entry.png" alt="" loading="lazy">查看組別登記</a></div></article>
         <article class="feature"><span class="feature-icon">📊</span><div class="feature-copy"><h3>多角度檢視組別作業</h3><p>可比較各組完成情形，也可切換指定組別，查看組內每位學生。</p><a class="shot-link" href="#shot-all-groups"><img src="assets/all-groups-overview.png" alt="" loading="lazy">全組概況</a> <a class="shot-link" href="#shot-one-group"><img src="assets/single-group-overview.png" alt="" loading="lazy">各組概況</a></div></article>
+      </div>
       </div>
     </section>
 
     <div id="shot-class" class="lightbox" role="dialog" aria-label="全班作業概況"><a class="lightbox-close" href="#highlights-title">關閉</a><img src="assets/class-overview.png" alt="全班學生作業概況卡片"></div>
+    <div id="shot-main" class="lightbox" role="dialog" aria-label="電腦版主畫面"><a class="lightbox-close" href="#highlights-title">關閉</a><img src="assets/desktop-main-dashboard.png" alt="作業清點小幫手電腦版主畫面"></div>
+    <div id="shot-mobile" class="lightbox" role="dialog" aria-label="手機檢視學生缺項"><a class="lightbox-close" href="#highlights-title">關閉</a><img src="assets/mobile-student-missing-items.png" alt="手機畫面顯示學生未繳交與待訂正作業"></div>
     <div id="shot-person" class="lightbox" role="dialog" aria-label="個人作業概況"><a class="lightbox-close" href="#highlights-title">關閉</a><img src="assets/student-overview.png" alt="個別學生的作業狀態概況"></div>
+    <div id="shot-person-list" class="lightbox" role="dialog" aria-label="個人狀態總覽"><a class="lightbox-close" href="#highlights-title">關閉</a><img src="assets/group-status-overview.png" alt="個人狀態總覽中依組別篩選學生"></div>
     <div id="shot-group-entry" class="lightbox" role="dialog" aria-label="依組別快速登記"><a class="lightbox-close" href="#highlights-title">關閉</a><img src="assets/group-quick-entry.png" alt="依組別排列座號並快速登記作業狀態"></div>
     <div id="shot-all-groups" class="lightbox" role="dialog" aria-label="全組作業概況"><a class="lightbox-close" href="#highlights-title">關閉</a><img src="assets/all-groups-overview.png" alt="依作業項目比較各組完成情形"></div>
     <div id="shot-one-group" class="lightbox" role="dialog" aria-label="各組作業概況"><a class="lightbox-close" href="#highlights-title">關閉</a><img src="assets/single-group-overview.png" alt="查看指定組別內每位學生的作業狀態"></div>
